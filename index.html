@@ -63,10 +63,18 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: bold;
             color: white;
             text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
         }
         
         .nav-links {
@@ -426,7 +434,10 @@
 <body>
     <header>
         <nav>
-            <a href="#home" class="logo">Brush and Beyond Painting</a>
+            <a href="#home" class="logo">
+                <img src="images/BAB_logo.png" alt="Brush and Beyond Logo">
+                <span>Brush and Beyond Painting</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home" onclick="showPage('home')">Home</a></li>
                 <li><a href="#services" onclick="showPage('services')">Services</a></li>
@@ -564,27 +575,21 @@
                 <div class="gallery-grid">
                     <div class="gallery-item">
                         <img src="images/bedroom-gray-after.jpg" alt="Bedroom with professional gray paint finish">
-                        <div class="gallery-caption">Modern gray bedroom transformation</div>
                     </div>
                     <div class="gallery-item">
                         <img src="images/bedroom-pink-before.jpg" alt="Pink bedroom painting project">
-                        <div class="gallery-caption">Vibrant pink room makeover</div>
                     </div>
                     <div class="gallery-item">
                         <img src="images/Drywall-Installation-after.jpg" alt="Professional drywall installation completed">
-                        <div class="gallery-caption">Expert drywall installation</div>
                     </div>
                     <div class="gallery-item">
                         <img src="images/Drywall-Installation-before.jpg" alt="Drywall installation in progress">
-                        <div class="gallery-caption">Professional drywall work</div>
                     </div>
                     <div class="gallery-item">
                         <img src="images/room-paint-after.jpg" alt="Freshly painted room">
-                        <div class="gallery-caption">Clean, professional paint finish</div>
                     </div>
                     <div class="gallery-item">
                         <img src="images/room-paint-before.jpg" alt="Room before painting">
-                        <div class="gallery-caption">Complete room transformation</div>
                     </div>
                 </div>
             </div>
