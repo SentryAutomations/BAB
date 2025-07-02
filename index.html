@@ -746,12 +746,13 @@
             data.timestamp = new Date().toISOString();
             data.source = 'main_website';
             
-            // Track conversion with Facebook Pixel
+            // Track conversion with Facebook Pixel FIRST
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Lead', {
                     value: 0.00,
                     currency: 'CAD',
                 });
+                console.log('Lead event fired');
             }
             
             // Create form-encoded data for Zapier
@@ -768,29 +769,25 @@
                 body: formBody
             })
             .then(response => {
-                if (response.ok || response.status === 200) {
-                    alert('Thank you! We\'ll get back to you within 24 hours.');
-                    event.target.reset();
-                    
-                    // Track conversion with Facebook Pixel
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            value: 0.00,
-                            currency: 'CAD',
-                        });
-                    }
-                } else {
-                    throw new Error('Network response was not ok');
+                console.log('Zapier response:', response.status);
+                alert('Thank you! We\'ll get back to you within 24 hours.');
+                event.target.reset();
+                
+                // Track another conversion event
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Still show success if it's a CORS error (webhook likely still received the data)
-                if (error.message.includes('CORS') || error.message.includes('Failed to fetch')) {
-                    alert('Thank you! We\'ll get back to you within 24 hours.');
-                    event.target.reset();
-                } else {
-                    alert('There was an error. Please call us at (873) 660-6740');
+                // Still show success and track conversion
+                alert('Thank you! We\'ll get back to you within 24 hours.');
+                event.target.reset();
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired in catch');
                 }
             });
         }

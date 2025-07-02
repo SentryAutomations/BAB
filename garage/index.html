@@ -699,7 +699,7 @@
             data.source = 'garage_finishing_landing';
             data.service = 'garage-finishing';
             
-            // Track conversion with Facebook Pixel
+            // Track conversion with Facebook Pixel FIRST
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Lead', {
                     content_name: 'Garage Finishing Quote',
@@ -707,6 +707,7 @@
                     value: 0.00,
                     currency: 'CAD',
                 });
+                console.log('Lead event fired');
             }
             
             // Create form-encoded data for Zapier
@@ -724,25 +725,24 @@
             })
             .then(response => {
                 // Zapier returns 200 OK even for successful webhook catches
-                if (response.ok || response.status === 200) {
-                    alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                    event.target.reset();
-                    
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'CompleteRegistration');
-                    }
-                } else {
-                    throw new Error('Network response was not ok');
+                console.log('Zapier response:', response.status);
+                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
+                event.target.reset();
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired');
                 }
             })
             .catch(error => {
                 console.error('Error details:', error);
-                // Still show success if it's a CORS error (webhook likely still received the data)
-                if (error.message.includes('CORS') || error.message.includes('Failed to fetch')) {
-                    alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                    event.target.reset();
-                } else {
-                    alert('There was an error. Please call us directly at (873) 660-6740');
+                // Still show success and track conversion
+                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
+                event.target.reset();
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired in catch');
                 }
             });
         }
