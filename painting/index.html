@@ -426,6 +426,7 @@
             color: white;
             position: relative;
             margin-top: 40px;
+            margin-bottom: 0;
         }
         
         .contact-form .section-inner {
@@ -517,7 +518,8 @@
             background: #2c3e50;
             color: white;
             padding: 40px 0;
-            margin-top: 60px;
+            margin-top: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         .footer-content {
@@ -619,7 +621,7 @@
         <nav class="nav-bar">
             <div class="nav-content">
                 <div class="logo-section">
-                    <img src="../images/BAB_logo.png" alt="Brush and Beyond Logo">
+                    <img src="../BAB_logo.png" alt="Brush and Beyond Logo">
                     <span class="company-name">Brush and Beyond</span>
                 </div>
                 <div class="nav-links">
@@ -775,6 +777,10 @@
                         <label for="message">Project Details (Optional)</label>
                         <textarea id="message" name="message" placeholder="Example: 3 bedrooms need painting, approximately 1200 sq ft..."></textarea>
                     </div>
+                    <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px;">
+                        <input type="checkbox" id="consent" name="consent" required style="width: auto; margin-top: 3px;">
+                        <label for="consent" style="font-size: 0.9em; line-height: 1.4;">I consent to Brush and Beyond Painting contacting me about my project via phone, email, or text message.</label>
+                    </div>
                     <button type="submit" class="submit-button">Get My Free Quote Now →</button>
                     <p class="privacy">We respect your privacy and will never share your information</p>
                 </form>
@@ -785,12 +791,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="../images/BAB_logo.png" alt="Brush and Beyond Logo">
+                <img src="../BAB_logo.png" alt="Brush and Beyond Logo">
             </div>
             <div class="footer-info">
                 <p><strong>Brush and Beyond Painting Corp.</strong></p>
                 <p>Professional Interior Painting in Ottawa</p>
-                <p>Email: <a href="mailto:info@brushandbeyond.ca">info@brushandbeyond.ca</a></p>
+                <p>Email: <a href="mailto:brushandbeyondottawa@gmail.com">brushandbeyondottawa@gmail.com</a></p>
                 <p>Phone: <a href="tel:873-660-6740">(873) 660-6740</a></p>
             </div>
             <div class="footer-links">
@@ -836,4 +842,58 @@
                 },
                 body: formBody
             })
-            .then(
+            .then(response => {
+                console.log('Zapier response:', response.status);
+                
+                // Replace form with thank you message
+                const formSection = document.querySelector('.contact-form .section-inner');
+                formSection.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <h2 style="color: white; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db;">(873) 660-6740</a></p>
+                    </div>
+                `;
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Still show success and track conversion
+                const formSection = document.querySelector('.contact-form .section-inner');
+                formSection.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <h2 style="color: white; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db;">(873) 660-6740</a></p>
+                    </div>
+                `;
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                    console.log('CompleteRegistration event fired in catch');
+                }
+            });
+        }
+        
+        // Track scroll depth
+        let scrollTracked = {25: false, 50: false, 75: false, 100: false};
+        
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+            
+            [25, 50, 75, 100].forEach(percent => {
+                if (scrollPercent >= percent && !scrollTracked[percent]) {
+                    scrollTracked[percent] = true;
+                    if (typeof fbq !== 'undefined') {
+                        fbq('trackCustom', 'ScrollDepth', {percent: percent});
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

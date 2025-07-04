@@ -490,6 +490,7 @@
             color: white;
             position: relative;
             margin-top: 40px;
+            margin-bottom: 0;
         }
         
         .contact-form .section-inner {
@@ -580,7 +581,8 @@
             background: #2c3e50;
             color: white;
             padding: 40px 0;
-            margin-top: 60px;
+            margin-top: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         .footer-content {
@@ -696,7 +698,7 @@
         <nav class="nav-bar">
             <div class="nav-content">
                 <div class="logo-section">
-                    <img src="../images/BAB_logo.png" alt="Brush and Beyond Logo">
+                    <img src="../BAB_logo.png" alt="Brush and Beyond Logo">
                     <span class="company-name">Brush and Beyond</span>
                 </div>
                 <div class="nav-links">
@@ -869,6 +871,10 @@
                         <label for="message">Tell Us About Your Garage</label>
                         <textarea id="message" name="message" placeholder="Size of garage, current condition, any specific needs..."></textarea>
                     </div>
+                    <div class="form-group" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px;">
+                        <input type="checkbox" id="consent" name="consent" required style="width: auto; margin-top: 3px;">
+                        <label for="consent" style="font-size: 0.9em; line-height: 1.4;">I consent to Brush and Beyond Painting contacting me about my project via phone, email, or text message.</label>
+                    </div>
                     <button type="submit" class="submit-button">Send My Free Quote Request</button>
                     <p class="privacy">We respect your privacy and will never share your information</p>
                 </form>
@@ -934,8 +940,16 @@
             .then(response => {
                 // Zapier returns 200 OK even for successful webhook catches
                 console.log('Zapier response:', response.status);
-                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                event.target.reset();
+                
+                // Replace form with thank you message
+                const formSection = document.querySelector('.contact-form .section-inner');
+                formSection.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <h2 style="color: white; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db;">(873) 660-6740</a></p>
+                    </div>
+                `;
                 
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'CompleteRegistration');
@@ -945,8 +959,14 @@
             .catch(error => {
                 console.error('Error details:', error);
                 // Still show success and track conversion
-                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                event.target.reset();
+                const formSection = document.querySelector('.contact-form .section-inner');
+                formSection.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <h2 style="color: white; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db;">(873) 660-6740</a></p>
+                    </div>
+                `;
                 
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'CompleteRegistration');
