@@ -806,12 +806,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="images/BAB_logo.png" alt="Brush and Beyond Logo">
+                <img src="BAB_logo.png" alt="Brush and Beyond Logo">
             </div>
             <div class="footer-info">
                 <p><strong>Brush and Beyond Painting Corp.</strong></p>
                 <p>Professional Interior Painting & Drywall Services in Ottawa</p>
-                <p>Email: <a href="mailto:info@brushandbeyond.ca">info@brushandbeyond.ca</a></p>
+                <p>Email: <a href="mailto:brushandbeyondottawa@gmail.com">brushandbeyondottawa@gmail.com</a></p>
                 <p>Phone: <a href="tel:873-660-6740">(873) 660-6740</a></p>
             </div>
             <div class="footer-links">
@@ -901,8 +901,16 @@
             })
             .then(response => {
                 console.log('Zapier response:', response.status);
-                alert('Thank you! We\'ll get back to you within 24 hours.');
-                event.target.reset();
+                
+                // Replace form with thank you message
+                const formContainer = document.querySelector('.contact-form');
+                formContainer.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 10px;">
+                        <h2 style="color: #2c3e50; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px; color: #555;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em; color: #666;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db; text-decoration: none; font-weight: bold;">(873) 660-6740</a></p>
+                    </div>
+                `;
                 
                 // Track another conversion event
                 if (typeof fbq !== 'undefined') {
@@ -913,8 +921,14 @@
             .catch(error => {
                 console.error('Error:', error);
                 // Still show success and track conversion
-                alert('Thank you! We\'ll get back to you within 24 hours.');
-                event.target.reset();
+                const formContainer = document.querySelector('.contact-form');
+                formContainer.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 10px;">
+                        <h2 style="color: #2c3e50; margin-bottom: 20px;">Thank You!</h2>
+                        <p style="font-size: 1.2em; margin-bottom: 30px; color: #555;">We've received your request and will contact you within 24 hours with your free quote.</p>
+                        <p style="font-size: 1.1em; color: #666;">Feel free to call us directly at <a href="tel:873-660-6740" style="color: #3498db; text-decoration: none; font-weight: bold;">(873) 660-6740</a></p>
+                    </div>
+                `;
                 
                 if (typeof fbq !== 'undefined') {
                     fbq('track', 'CompleteRegistration');
