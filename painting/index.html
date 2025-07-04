@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interior Painting Ottawa - Get Your Free Quote | Brush and Beyond</title>
-    <meta name="description" content="Professional interior painting in Ottawa. 2-3 day completion. Free quotes. 5-star reviews. Call (873) 660-6740">
+    <meta name="description" content="Professional interior painting in Ottawa. Quality workmanship. Free quotes. 5-star reviews. Call (873) 660-6740">
     
     <!-- Meta Pixel Code -->
     <script>
@@ -46,6 +46,73 @@
             max-width: 100%;
             margin: 0 auto;
             padding: 0;
+        }
+        
+        /* Simple Navigation */
+        .nav-bar {
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .company-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .nav-phone {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-phone:hover {
+            background: #c0392b;
+            color: white !important;
         }
         
         .urgency-bar {
@@ -111,6 +178,15 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+        }
+        
+        .badge a {
+            color: #555;
+            text-decoration: none;
+        }
+        
+        .badge a:hover {
+            text-decoration: underline;
         }
         
         h1 {
@@ -335,6 +411,15 @@
             font-size: 0.8em;
         }
         
+        .verified a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .verified a:hover {
+            text-decoration: underline;
+        }
+        
         .contact-form {
             background: #2c3e50;
             padding: 60px 40px 40px;
@@ -427,7 +512,75 @@
             opacity: 0.8;
         }
         
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-info {
+            margin-bottom: 20px;
+        }
+        
+        .footer-info p {
+            margin: 5px 0;
+        }
+        
+        .footer-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+        }
+        
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .company-name {
+                font-size: 0.9em;
+            }
+            
             h1 {
                 font-size: 2em;
             }
@@ -452,11 +605,32 @@
             .contact-form {
                 padding: 30px 20px;
             }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <div class="nav-content">
+                <div class="logo-section">
+                    <img src="../images/BAB_logo.png" alt="Brush and Beyond Logo">
+                    <span class="company-name">Brush and Beyond</span>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#services">Services</a>
+                    <a href="../index.html#contact">Contact</a>
+                    <a href="tel:873-660-6740" class="nav-phone">📞 (873) 660-6740</a>
+                </div>
+            </div>
+        </nav>
+        
         <div class="urgency-bar">
             🔥 Book Your Free Quote for July - Limited Availability!
         </div>
@@ -470,7 +644,7 @@
                     </div>
                     <div class="badge">
                         <div class="badge-icon">★</div>
-                        <span>5-Star Reviews</span>
+                        <span><a href="https://www.google.com/maps/place/Brush+And+Beyond+Painting+Corp./@44.5738042,-77.4429085,8z/data=!4m8!3m7!1s0x6a153599dae0c963:0x6df3c546c7f35165!8m2!3d44.5738042!4d-77.4429084!9m1!1b1!16s%2Fg%2F11l6l8461_?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">5-Star Reviews</a></span>
                     </div>
                     <div class="badge">
                         <div class="badge-icon">🏆</div>
@@ -544,19 +718,19 @@
             <div class="section-inner">
                 <h2>What Our Customers Say on Google</h2>
                 <div class="testimonial">
-                    <span class="verified">Google Review</span>
+                    <span class="verified"><a href="https://www.google.com/maps/place/Brush+And+Beyond+Painting+Corp./@44.5738042,-77.4429085,8z/data=!4m8!3m7!1s0x6a153599dae0c963:0x6df3c546c7f35165!8m2!3d44.5738042!4d-77.4429084!9m1!1b1!16s%2Fg%2F11l6l8461_?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Review</a></span>
                     <div class="stars">★★★★★</div>
                     <p>"I'm writing this review today to recognize the great job Brush and Beyond did in working with us to approve the appearance of our home! Bailey is honest, quick to reply, caring, efficient, and hardworking! Looking forward to working with them in the near future!"</p>
                     <div class="author">- Rebecca YW Zhou (June 2024)</div>
                 </div>
                 <div class="testimonial">
-                    <span class="verified">Google Review</span>
+                    <span class="verified"><a href="https://www.google.com/maps/place/Brush+And+Beyond+Painting+Corp./@44.5738042,-77.4429085,8z/data=!4m8!3m7!1s0x6a153599dae0c963:0x6df3c546c7f35165!8m2!3d44.5738042!4d-77.4429084!9m1!1b1!16s%2Fg%2F11l6l8461_?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Review</a></span>
                     <div class="stars">★★★★★</div>
                     <p>"Nice person easy to work. We are doing our basement renovation and wanted to get it painted before we do the floor. He was able to complete job on time and in our budget."</p>
                     <div class="author">- G Thanda (April 2024)</div>
                 </div>
                 <div class="testimonial">
-                    <span class="verified">Google Review</span>
+                    <span class="verified"><a href="https://www.google.com/maps/place/Brush+And+Beyond+Painting+Corp./@44.5738042,-77.4429085,8z/data=!4m8!3m7!1s0x6a153599dae0c963:0x6df3c546c7f35165!8m2!3d44.5738042!4d-77.4429084!9m1!1b1!16s%2Fg%2F11l6l8461_?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Google Review</a></span>
                     <div class="stars">★★★★★</div>
                     <p>"As a new homeowner, you have 1 million things to do and get done. I was very fortunate to have been connected to Bailey by my Real Estate Agent. Bailey, his team and his company did a fabulous job painting our entire house"</p>
                     <div class="author">- Nafiz Ahamed (November 2023)</div>
@@ -602,11 +776,29 @@
                         <textarea id="message" name="message" placeholder="Example: 3 bedrooms need painting, approximately 1200 sq ft..."></textarea>
                     </div>
                     <button type="submit" class="submit-button">Get My Free Quote Now →</button>
-                    <p class="privacy">🔒 Your information is 100% secure and never shared</p>
+                    <p class="privacy">We respect your privacy and will never share your information</p>
                 </form>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../images/BAB_logo.png" alt="Brush and Beyond Logo">
+            </div>
+            <div class="footer-info">
+                <p><strong>Brush and Beyond Painting Corp.</strong></p>
+                <p>Professional Interior Painting in Ottawa</p>
+                <p>Email: <a href="mailto:info@brushandbeyond.ca">info@brushandbeyond.ca</a></p>
+                <p>Phone: <a href="tel:873-660-6740">(873) 660-6740</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacy Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Form submission handler
@@ -644,44 +836,4 @@
                 },
                 body: formBody
             })
-            .then(response => {
-                console.log('Zapier response:', response.status);
-                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                event.target.reset();
-                
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'CompleteRegistration');
-                    console.log('CompleteRegistration event fired');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Still show success and track conversion
-                alert('Thank you! We\'ll contact you within 24 hours with your free quote.');
-                event.target.reset();
-                
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'CompleteRegistration');
-                    console.log('CompleteRegistration event fired in catch');
-                }
-            });
-        }
-        
-        // Track scroll depth
-        let scrollTracked = {25: false, 50: false, 75: false, 100: false};
-        
-        window.addEventListener('scroll', function() {
-            const scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
-            
-            [25, 50, 75, 100].forEach(percent => {
-                if (scrollPercent >= percent && !scrollTracked[percent]) {
-                    scrollTracked[percent] = true;
-                    if (typeof fbq !== 'undefined') {
-                        fbq('trackCustom', 'ScrollDepth', {percent: percent});
-                    }
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            .then(
